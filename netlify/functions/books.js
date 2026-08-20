@@ -22,7 +22,10 @@ exports.handler = async () => {
       `https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?${params}`
     );
 
-    if (!response.ok) throw new Error("Rakuten API error");
+    if (!response.ok) {
+      const detail = await response.text();
+      throw new Error(`Rakuten API error ${response.status}: ${detail}`);
+    }
 
     const data = await response.json();
 
@@ -44,9 +47,12 @@ exports.handler = async () => {
       body: JSON.stringify(books)
     };
   } catch (error) {
+    console.error(error.message);
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "本の取得に失敗しました。" })
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify({ error: error.message })
     };
   }
 };
