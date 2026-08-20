@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="次に読む一冊を、ランダムに見つけよう。" />
+  <title>本のガチャ｜次に読む一冊</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <p class="eyebrow">RANDOM BOOK DISCOVERY</p>
+      <h1>次に読む一冊を、<br />ランダムに。</h1>
+      <p>気分を変える本との偶然の出会い。</p>
+      <button id="reloadButton" type="button">本を引き直す <span>↻</span></button>
+    </header>
+
+    <section aria-live="polite" aria-label="おすすめの本">
+      <div id="bookGrid" class="book-grid"></div>
+    </section>
+
+    <p class="notice">
+      ※当サイトには楽天アフィリエイトのリンクを含みます。<br />
+      本の情報・価格は楽天ブックスの掲載内容に基づきます。
+    </p>
+  </main>
+
+  <template id="bookTemplate">
+    <a class="book-card" target="_blank" rel="noopener sponsored">
+      <div class="cover-wrap">
+        <img class="cover" loading="lazy" alt="" />
+      </div>
+      <div class="book-info">
+        <p class="book-title"></p>
+        <p class="book-author"></p>
+        <p class="book-price"></p>
+        <span class="shop-link">楽天ブックスで見る →</span>
+      </div>
+    </a>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
