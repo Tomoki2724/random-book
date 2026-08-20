@@ -10,6 +10,7 @@ exports.handler = async () => {
 
   const params = new URLSearchParams({
     applicationId: process.env.RAKUTEN_APPLICATION_ID,
+    accessKey: process.env.RAKUTEN_ACCESS_KEY,
     affiliateId: process.env.RAKUTEN_AFFILIATE_ID,
     keyword,
     hits: "30",
@@ -19,7 +20,7 @@ exports.handler = async () => {
 
   try {
     const response = await fetch(
-      `https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?${params}`
+      `https://openapi.rakuten.co.jp/services/api/BooksTotal/Search/20170404?${params}`
     );
 
     if (!response.ok) {
